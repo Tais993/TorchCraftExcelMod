@@ -1,6 +1,8 @@
 package nl.tijsbeek.torchcraftexcelmod.Event;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -9,26 +11,33 @@ import nl.tijsbeek.torchcraftexcelmod.Gui.RenderGuiHandler;
 import nl.tijsbeek.torchcraftexcelmod.Mod.Inventory;
 import nl.tijsbeek.torchcraftexcelmod.torchcraftexcelmod;
 
-import static nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent.sendMessage;
+import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.CalculateInventoryWorth;
+import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.startCalculationsInt;
 
 @Mod.EventBusSubscriber(modid = torchcraftexcelmod.MOD_ID)
 public class ClientTickEvent extends Event {
 
-    int timesChanged = 0;
+    int tick = 0;
     boolean calculationsStarted = true;
     Inventory inventory = new Inventory();
     RenderGuiHandler renderGuiHandler = new RenderGuiHandler();
 
+
+    // ! If I switch servers, it takes a few seconds / minutes to start it again. Don't understand why or how?
+
     @SubscribeEvent
     public void clientTickEvent(TickEvent.ClientTickEvent event) throws InterruptedException {
-        /*
-        if (Minecraft.getInstance().player != null) {
-            if (Minecraft.getInstance().player.inventory.getTimesChanged() > timesChanged) {
-                inventory.countInventory();
-                timesChanged = Minecraft.getInstance().player.inventory.getTimesChanged();
-                sendMessage("Your inventory has been changed: " + timesChanged + "times");
+        // * allows you to turn the calculations on or off
+        if(startCalculationsInt == 1) {
+            // * If the game is still in the mainscreen or something like that it returns a null, so if it's not a null it can go trough
+            if (Minecraft.getInstance().player != null) {
+                tick++;
+                // * Waits 50 ticks (2.5 seconds) to calculate
+                if (tick >= 50) {
+                    CalculateInventoryWorth();
+                    tick = 0;
+                }
             }
         }
-        */
     }
 }

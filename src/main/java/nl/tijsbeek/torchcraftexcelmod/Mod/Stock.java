@@ -1,33 +1,28 @@
 package nl.tijsbeek.torchcraftexcelmod.Mod;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent;
+import net.minecraft.util.text.StringTextComponent;
 
 import java.util.HashMap;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Stock {
 
     static public HashMap<String, Integer> itemAmountInventory = new HashMap<String, Integer>();
-    static HashMap<String, Double> itemPriceDataBase = new HashMap<String, Double>();
-    static  HashMap<String, Item> itemItems = new HashMap<String, Item>();
+    static public HashMap<String, Double> itemPriceDataBase = new HashMap<String, Double>();
+    static HashMap<String, Item> itemItems = new HashMap<String, Item>();
 
-    static ChatEvent chatEvent = new ChatEvent();
     static int assignValues = 0;
 
-    public Item item = null;
+    static public int startCalculationsInt = 0;
 
     public static void main() {
-        chatEvent.sendMessage("Main has been reached");
+        Minecraft.getInstance().player.sendMessage(new StringTextComponent("Main has been reached"));
 
+        // * If the main is already run it won't override the old values
         if (assignValues != 1) {
-            chatEvent.sendMessage("Assigning the values");
+            Minecraft.getInstance().player.sendMessage(new StringTextComponent("Assigning the values"));
 
             itemAmountInventory.put("STONE", 0);
             itemAmountInventory.put("GOLD_ORE", 0);
@@ -93,33 +88,40 @@ public class Stock {
             itemItems.put("COAL_BLOCK", Items.COAL_BLOCK);
 
             assignValues = 1;
-            chatEvent.sendMessage("The values have been assigned.");
+            Minecraft.getInstance().player.sendMessage(new StringTextComponent("The values have been assigned."));
         }
     }
 
-    double inventoryWorth = 0;
+    static double inventoryWorth = 0;
 
-    public double getInventoryWorth(){
-
+    public static double getInventoryWorth(){
         return inventoryWorth;
     }
 
-    public void CalculateInventoryWorth(){
-        inventoryWorth = 0;
+    public static void CalculateInventoryWorth(){
+
+        // * For every item it checks how many items of in your inventory are
         itemItems.forEach((key, value)-> {
             itemAmountInventory.replace(key, count(value));
         });
 
+        // * How many items someone has * the price it's worth
         itemAmountInventory.forEach((key, value)-> {
-            inventoryWorth += value * itemPriceDataBase.get(key);
+            inventoryWorth += value * itemPriceDataBase.getOrDefault(key, 0.0);
         });
 
-        chatEvent.sendMessage("Total inventory worth :" + getInventoryWorth());
+//        Minecraft.getInstance().player.sendMessage(new StringTextComponent("Total inventory worth :" + getInventoryWorth()));
     }
 
-    public int count(Item item) {
+    // * Clear's all items that should be in his inv, if there're any errors
+    public static void clearInventory(){
+        itemItems.forEach((key, value)-> {
+            itemAmountInventory.replace(key, 0);
+        });
+    }
+
+    // * Counts the items in inventory
+    public static int count(Item item) {
         return Minecraft.getInstance().player.inventory.count(item);
     }
-
-
 }

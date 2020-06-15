@@ -1,13 +1,14 @@
 package nl.tijsbeek.torchcraftexcelmod.Gui;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import nl.tijsbeek.torchcraftexcelmod.Mod.Stock;
 
-public class RenderGuiHandler {
+import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.getInventoryWorth;
 
-    Stock stock = new Stock();
+public class RenderGuiHandler {
 
     @SubscribeEvent
     public void onRenderGui(RenderGameOverlayEvent event) {
@@ -15,9 +16,10 @@ public class RenderGuiHandler {
             Minecraft mc = Minecraft.getInstance();
 
             int screenHeight = event.getWindow().getScaledHeight();
-            int textLength = Minecraft.getInstance().fontRenderer.getStringWidth(stock.getInventoryWorth() + "");
+            int textLength = Minecraft.getInstance().fontRenderer.getStringWidth(getInventoryWorth() + "");
 
-            Minecraft.getInstance().fontRenderer.drawString("Total inventory worth: " + stock.getInventoryWorth(), 0, 0, -1);
+            // * Renders at the top left the amount of money the inventory is worth
+            Minecraft.getInstance().fontRenderer.drawString("Total inventory worth: " + getInventoryWorth(), 0, 0, -1);
         }
     }
 }
