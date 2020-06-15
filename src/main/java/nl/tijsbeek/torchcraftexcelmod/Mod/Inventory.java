@@ -19,11 +19,10 @@ public class Inventory {
 
     public void countInventory() {
 
-        for (Map.Entry<String, Integer> entry : stock.itemAmountInventory.entrySet()) {
-            chatEvent.sendMessage("Key: "+  entry.getKey() + " Value:" + Minecraft.getInstance().player.inventory.count(Item.getItemById(stock.itemKey.get(entry.getKey()))));
-            stock.itemAmountInventory.replace(entry.getKey(),Minecraft.getInstance().player.inventory.count(Item.getItemById(stock.itemKey.get(entry.getKey()))));
-        }
-        chatEvent.sendMessage("Key: "+ "null" + " Value:" + "null");
+        stock.itemAmountInventory.forEach((key, value) -> {
+            chatEvent.sendMessage("Key: " + key + " Itemcount " + Minecraft.getInstance().player.inventory.count(Item.getItemById(stock.itemKey.get(key))));
+            stock.itemAmountInventory.replace(key,Minecraft.getInstance().player.inventory.count(Item.getItemById(stock.itemKey.get(key))));
+        });
 
         /*
         stock.gold_ore = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.GOLD_ORE));

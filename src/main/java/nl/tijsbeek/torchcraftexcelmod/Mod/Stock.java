@@ -1,5 +1,6 @@
 package nl.tijsbeek.torchcraftexcelmod.Mod;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
 import nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent;
 
@@ -79,6 +80,8 @@ public class Stock {
         itemKey.put("GRAVEL", 28);
         itemKey.put("OAK_LOG", 32);
         itemKey.put("COAL_BLOCKS", 317);
+
+
     }
 
     double inventoryWorth = 0;
@@ -90,6 +93,11 @@ public class Stock {
     public
 
     void CalculateInventoryWorth(){
+
+        itemAmountInventory.forEach((key, value) -> {
+            chatEvent.sendMessage("Key: " + key + " Itemcount " + Minecraft.getInstance().player.inventory.count(Item.getItemById(itemKey.get(key))));
+            itemAmountInventory.replace(key,Minecraft.getInstance().player.inventory.count(Item.getItemById(itemKey.get(key))));
+        });
 
         for (Map.Entry<String, Integer> entry : itemAmountInventory.entrySet()){
             String key = entry.getKey();
