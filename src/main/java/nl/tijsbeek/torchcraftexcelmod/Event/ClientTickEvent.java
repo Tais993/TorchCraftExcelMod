@@ -21,6 +21,7 @@ public class ClientTickEvent extends Event {
 
     @SubscribeEvent
     public void clientTickEvent(TickEvent.ClientTickEvent event) throws InterruptedException {
+        /*
         if (Minecraft.getInstance().player != null) {
             if (Minecraft.getInstance().player.inventory.getTimesChanged() > timesChanged) {
                 inventory.countInventory();
@@ -28,5 +29,6 @@ public class ClientTickEvent extends Event {
                 sendMessage("Your inventory has been changed: " + timesChanged + "times");
             }
         }
+        */
     }
 }

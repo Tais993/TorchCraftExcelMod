@@ -17,12 +17,7 @@ public class Inventory {
     Stock stock = new Stock();
     ChatEvent chatEvent = new ChatEvent();
 
-    public void countInventory() {
-
-        stock.itemAmountInventory.forEach((key, value) -> {
-            chatEvent.sendMessage("Key: " + key + " Itemcount " + Minecraft.getInstance().player.inventory.count(Item.getItemById(stock.itemKey.get(key))));
-            stock.itemAmountInventory.replace(key,Minecraft.getInstance().player.inventory.count(Item.getItemById(stock.itemKey.get(key))));
-        });
+    public void countInventory(){
 
         /*
         stock.gold_ore = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.GOLD_ORE));

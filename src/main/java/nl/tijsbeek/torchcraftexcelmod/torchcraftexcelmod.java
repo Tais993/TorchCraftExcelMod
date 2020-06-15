@@ -7,6 +7,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent;
 import nl.tijsbeek.torchcraftexcelmod.Event.ClientTickEvent;
 import nl.tijsbeek.torchcraftexcelmod.Gui.*;
+import nl.tijsbeek.torchcraftexcelmod.Mod.Stock;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,8 +19,6 @@ public class torchcraftexcelmod {
 
     private static final Logger LOGGER = LogManager.getLogger();
     ChatEvent chatEvent = new ChatEvent();
-    ClientTickEvent clientTickEvent = new ClientTickEvent();
-    RenderGuiHandler renderGuiHandler = new RenderGuiHandler();
 
     public torchcraftexcelmod() {
         // Register the setup method for modloading
