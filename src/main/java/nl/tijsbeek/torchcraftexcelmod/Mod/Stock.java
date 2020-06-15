@@ -1,60 +1,103 @@
 package nl.tijsbeek.torchcraftexcelmod.Mod;
 
 import net.minecraft.item.Item;
-import nl.tijsbeek.torchcraftexcelmod.event.ChatEvent;
+import nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Stock {
+
+    HashMap<String, Integer> itemAmountInventory = new HashMap<String, Integer>();
+    HashMap<String, Double> itemPriceDataBase = new HashMap<String, Double>();
+    HashMap<String, Integer> itemKey = new HashMap<String, Integer>();
 
     ChatEvent chatEvent = new ChatEvent();
 
     public Item item = null;
 
-    public int stone = 0;
-    public int gold_ore = 0;
-    public int iron_ore = 0;
-    public int coal_ore = 0;
-    public int lapis_ore = 0;
-    public int diamond_ore = 0;
-    public int emerald_ore = 0;
-    public int diorite = 0;
-    public int andesite = 0;
-    public int granite = 0;
-    public int redstone_ore = 0;
-    public int prismarine_bricks = 0;
-    public int dark_prismarine = 0;
-    public int nether_quartz_ore = 0;
-    public int sea_latern = 0;
-    public int red_sandstone = 0;
-    public int sandstone = 0;
-    public int gravel = 0;
-    public int oak_log = 0;
-    public int coal_blocks = 0;
+    public void main(String[] args) {
+        itemAmountInventory.put("STONE", 0);
+        itemAmountInventory.put("GOLD_ORE", 0);
+        itemAmountInventory.put("IRON_ORE", 0);
+        itemAmountInventory.put("COAL_ORE", 0);
+        itemAmountInventory.put("LAPIS_ORE", 0);
+        itemAmountInventory.put("DIAMOND_ORE", 0);
+        itemAmountInventory.put("EMERALD_ORE", 0);
+        itemAmountInventory.put("DIORITE", 0);
+        itemAmountInventory.put("andesite", 0);
+        itemAmountInventory.put("GRANITE", 0);
+        itemAmountInventory.put("REDSTONE_ORE", 0);
+        itemAmountInventory.put("PRISMARINE_BRICKS", 0);
+        itemAmountInventory.put("DARK_PRISMARINE", 0);
+        itemAmountInventory.put("NETHER_QUARTZ_ORE", 0);
+        itemAmountInventory.put("SEA_LATERN", 0);
+        itemAmountInventory.put("RED_SANDSTONE", 0);
+        itemAmountInventory.put("SANDSTONE", 0);
+        itemAmountInventory.put("GRAVEL", 0);
+        itemAmountInventory.put("OAK_LOG", 0);
+        itemAmountInventory.put("COAL_BLOCKS", 0);
 
-    double stonePrice = 1.1;
-    double gold_ore_price = 16.406;
-    double iron_ore_price = 14.063;
-    double coal_ore_price = 4;
-    double lapis_ore_price = 140;
-    double diamond_ore_price = 32;
-    double emerald_ore_price = 24;
-    double diorite_price = 2;
-    double andesite_price = 3;
-    double granite_price = 3;
-    double redstone_ore_price = 28;
-    double prismarine_bricks_price = 25;
-    double dark_prismarine_price = 12;
-    double nether_quartz_ore_price = 5;
-    double sea_latern_price = 35;
-    double red_sandstone_price = 6;
-    double sandstone_price = 5;
-    double gravel_price = 1;
-    double oak_log_price = 1;
-    double coal_blocks_price = 19;
+        itemPriceDataBase.put("STONE", 1.1);
+        itemPriceDataBase.put("GOLD_ORE", 16.406);
+        itemPriceDataBase.put("IRON_ORE", 14.063);
+        itemPriceDataBase.put("COAL_ORE", 4.0);
+        itemPriceDataBase.put("LAPIS_ORE", 140.0);
+        itemPriceDataBase.put("DIAMOND_ORE", 32.0);
+        itemPriceDataBase.put("EMERALD_ORE", 24.0);
+        itemPriceDataBase.put("DIORITE", 2.0);
+        itemPriceDataBase.put("ANDESITE", 3.0);
+        itemPriceDataBase.put("GRANITE", 3.0);
+        itemPriceDataBase.put("REDSTONE_ORE_PRICE", 28.0);
+        itemPriceDataBase.put("PRISMARINE_BRICKS", 25.0);
+        itemPriceDataBase.put("DARK_PRISMARINE", 12.0);
+        itemPriceDataBase.put("NETHER_QUARTZ_ORE", 5.0);
+        itemPriceDataBase.put("SEA_LATERN", 35.0);
+        itemPriceDataBase.put("RED_SANDSTONE", 6.0);
+        itemPriceDataBase.put("SANDSTONE", 5.0);
+        itemPriceDataBase.put("GRAVEL", 1.0);
+        itemPriceDataBase.put("OAK_LOG", 1.0);
+        itemPriceDataBase.put("COAL_BLOCKS", 19.0);
 
-    public double inventoryWorth = 0;
+        /*
+        itemKey.put("STONE", 1.1);
+        itemKey.put("GOLD_ORE", 16.406);
+        itemKey.put("IRON_ORE", 14.063);
+        itemKey.put("COAL_ORE", 4.0);
+        itemKey.put("LAPIS_ORE", 140.0);
+        itemKey.put("DIAMOND_ORE", 32.0);
+        itemKey.put("EMERALD_ORE", 24.0);
+        itemKey.put("DIORITE", 2.0);
+        itemKey.put("ANDESITE", 3.0);
+        itemKey.put("GRANITE", 3.0);
+        itemKey.put("REDSTONE_ORE_PRICE", 28.0);
+        itemKey.put("PRISMARINE_BRICKS", 25.0);
+        itemKey.put("DARK_PRISMARINE", 12.0);
+        itemKey.put("NETHER_QUARTZ_ORE", 5.0);
+        itemKey.put("SEA_LATERN", 35.0);
+        itemKey.put("RED_SANDSTONE", 6.0);
+        itemKey.put("SANDSTONE", 5.0);
+        itemKey.put("GRAVEL", 1.0);
+        itemKey.put("OAK_LOG", 1.0);
+        itemKey.put("COAL_BLOCKS", 19.0); */
+    }
+
+    double inventoryWorth = 0;
+
+    public double getInventoryWorth(){
+        return inventoryWorth;
+    }
+
+    public
 
     void CalculateInventoryWorth(){
-        inventoryWorth = (stone * stonePrice) + (gold_ore * gold_ore_price) + (iron_ore * iron_ore_price) + (coal_ore * coal_ore_price) + (lapis_ore * lapis_ore_price) + (diamond_ore * diamond_ore_price) + (emerald_ore * emerald_ore_price) + (diorite * diorite_price) + (andesite * andesite_price) + (granite * granite_price) + (redstone_ore * redstone_ore_price) + (prismarine_bricks * prismarine_bricks_price) + (dark_prismarine * dark_prismarine_price) + (nether_quartz_ore * nether_quartz_ore_price) + (sea_latern * sea_latern_price) + (red_sandstone * red_sandstone_price) + (sandstone * sandstone_price) + (gravel * gravel_price) + (oak_log * oak_log_price) + (coal_blocks * coal_blocks_price);
-        chatEvent.sendMessage("Total inventory worth :" + inventoryWorth);
+
+        for (Map.Entry<String, Integer> entry : itemAmountInventory.entrySet()){
+            String key = entry.getKey();
+            int value = entry.getValue();
+            inventoryWorth += value * itemPriceDataBase.get(key);
+        }
+
+        chatEvent.sendMessage("Total inventory worth :" + getInventoryWorth());
     }
 }

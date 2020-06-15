@@ -4,9 +4,9 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import nl.tijsbeek.torchcraftexcelmod.event.ChatEvent;
-import nl.tijsbeek.torchcraftexcelmod.event.ClientTickEvent;
-import nl.tijsbeek.torchcraftexcelmod.GUI.*;
+import nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent;
+import nl.tijsbeek.torchcraftexcelmod.Event.ClientTickEvent;
+import nl.tijsbeek.torchcraftexcelmod.Gui.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,6 +27,10 @@ public class torchcraftexcelmod {
         FMLJavaModLoadingContext.get().getModEventBus().register(chatEvent);
         MinecraftForge.EVENT_BUS.register(new ClientTickEvent());
         MinecraftForge.EVENT_BUS.register(new RenderGuiHandler());
+    }
+
+    public static void main(String[] args) {
+
     }
 
     private void setup(final FMLCommonSetupEvent event) {

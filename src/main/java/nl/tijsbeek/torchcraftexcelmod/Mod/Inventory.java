@@ -7,15 +7,48 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
+import nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent;
+import nl.tijsbeek.torchcraftexcelmod.torchcraftexcelmod;
+
+import java.util.Map;
 
 public class Inventory {
 
     Stock stock = new Stock();
+    ChatEvent chatEvent = new ChatEvent();
 
     public void countInventory() {
 
-            stock.stone = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.STONE));
-            stock.gold_ore = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.GOLD_ORE));
+        /*
+        for (Map.Entry<String, Integer> entry : stock.itemAmountInventory.entrySet()) {
+            String key = entry.getKey();
+            entry.setValue(Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.STONE)));
+        }
+         */
+
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.GOLD_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.GOLD_ORE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.IRON_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.IRON_ORE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.COAL_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.COAL_ORE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.LAPIS_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.LAPIS_ORE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.DIAMOND_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.DIAMOND_ORE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.EMERALD_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.EMERALD_ORE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.DIORITE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.DIORITE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.ANDESITE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.ANDESITE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.GRANITE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.GRANITE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.REDSTONE_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.REDSTONE_ORE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.PRISMARINE_BRICKS) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.PRISMARINE_BRICKS)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.DARK_PRISMARINE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.DARK_PRISMARINE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.NETHER_QUARTZ_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.NETHER_QUARTZ_ORE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.SEA_LANTERN) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.SEA_LANTERN)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.RED_SANDSTONE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.RED_SANDSTONE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.SANDSTONE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.GRAVEL) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.GRAVEL)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.OAK_LOG) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.OAK_LOG)));
+        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.COAL_BLOCK) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.COAL_BLOCK)));
+
+
+        /*
+        stock.gold_ore = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.GOLD_ORE));
             stock.iron_ore = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.IRON_ORE));
             stock.coal_ore = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.COAL_ORE));
             stock.lapis_ore = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.LAPIS_ORE));
@@ -36,10 +69,11 @@ public class Inventory {
             stock.coal_blocks = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.COAL_BLOCK));
 
 
-        /*
+
         ITextComponent iTextComponent = new StringTextComponent(
        "stock.stone(" + stock.stone + ")\n" +
             "stock.gold_ore(" + stock.gold_ore + ")\n" +
+            "stock.coal_ore(" + stock.coal_ore + ")\n" +
             "stock.iron_ore(" + stock.iron_ore + ")\n" +
             "stock.lapis_ore(" + stock.lapis_ore + ")\n" +
             "stock.diamond_ore(" + stock.diamond_ore + ")\n" +
@@ -58,12 +92,14 @@ public class Inventory {
             "stock.oak_log(" + stock.oak_log + ")\n" +
             "stock.coal_blocks(" + stock.coal_blocks + ")");
         Minecraft.getInstance().player.sendMessage(iTextComponent);
-        */
+
+   */
 
         stock.CalculateInventoryWorth();
     }
 
     public void clearStock(){
+        /*
         stock.stone = 0;
         stock.gold_ore = 0;
         stock.iron_ore = 0;
@@ -86,6 +122,7 @@ public class Inventory {
         stock.coal_blocks = 0;
 
         checkItemStackinInventory(Blocks.SEA_LANTERN);
+         */
     }
 
     boolean checkItemStackinInventory(Block block) {

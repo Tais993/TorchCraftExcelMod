@@ -1,15 +1,15 @@
-package nl.tijsbeek.torchcraftexcelmod.event;
+package nl.tijsbeek.torchcraftexcelmod.Event;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import nl.tijsbeek.torchcraftexcelmod.GUI.RenderGuiHandler;
+import nl.tijsbeek.torchcraftexcelmod.Gui.RenderGuiHandler;
 import nl.tijsbeek.torchcraftexcelmod.Mod.Inventory;
 import nl.tijsbeek.torchcraftexcelmod.torchcraftexcelmod;
 
-import static nl.tijsbeek.torchcraftexcelmod.event.ChatEvent.sendMessage;
+import static nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent.sendMessage;
 
 @Mod.EventBusSubscriber(modid = torchcraftexcelmod.MOD_ID)
 public class ClientTickEvent extends Event {
