@@ -19,33 +19,11 @@ public class Inventory {
 
     public void countInventory() {
 
-        /*
         for (Map.Entry<String, Integer> entry : stock.itemAmountInventory.entrySet()) {
-            String key = entry.getKey();
-            entry.setValue(Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.STONE)));
+            chatEvent.sendMessage("Key: "+  entry.getKey() + " Value:" + Minecraft.getInstance().player.inventory.count(Item.getItemById(stock.itemKey.get(entry.getKey()))));
+            stock.itemAmountInventory.replace(entry.getKey(),Minecraft.getInstance().player.inventory.count(Item.getItemById(stock.itemKey.get(entry.getKey()))));
         }
-         */
-
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.GOLD_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.GOLD_ORE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.IRON_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.IRON_ORE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.COAL_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.COAL_ORE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.LAPIS_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.LAPIS_ORE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.DIAMOND_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.DIAMOND_ORE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.EMERALD_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.EMERALD_ORE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.DIORITE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.DIORITE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.ANDESITE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.ANDESITE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.GRANITE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.GRANITE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.REDSTONE_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.REDSTONE_ORE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.PRISMARINE_BRICKS) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.PRISMARINE_BRICKS)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.DARK_PRISMARINE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.DARK_PRISMARINE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.NETHER_QUARTZ_ORE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.NETHER_QUARTZ_ORE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.SEA_LANTERN) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.SEA_LANTERN)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.RED_SANDSTONE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.RED_SANDSTONE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.SANDSTONE) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.SANDSTONE)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.GRAVEL) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.GRAVEL)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.OAK_LOG) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.OAK_LOG)));
-        chatEvent.sendMessage("Item: " + Item.getItemFromBlock(Blocks.COAL_BLOCK) + " ID: " + Item.getIdFromItem(Item.getItemFromBlock(Blocks.COAL_BLOCK)));
-
+        chatEvent.sendMessage("Key: "+ "null" + " Value:" + "null");
 
         /*
         stock.gold_ore = Minecraft.getInstance().player.inventory.count(Item.getItemFromBlock(Blocks.GOLD_ORE));
