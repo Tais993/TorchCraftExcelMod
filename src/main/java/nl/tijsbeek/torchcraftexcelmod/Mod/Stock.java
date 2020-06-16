@@ -27,6 +27,12 @@ public class Stock {
             // * Assign's how many times the specified item is inside the inventory (default is 0
             // ! Add a GUI or a import from excel function
 
+            itemAmountInventory.put("STONE", 0);
+            itemAmountInventory.put("COBBLESTONE", 0);
+            itemAmountInventory.put("DIORITE", 0);
+            itemAmountInventory.put("ANDESITE", 0);
+            itemAmountInventory.put("GRANITE", 0);
+
             itemAmountInventory.put("DIAMOND", 0);
             itemAmountInventory.put("LAPIS", 0);
             itemAmountInventory.put("EMERALD", 0);
@@ -48,14 +54,8 @@ public class Stock {
             itemAmountInventory.put("EMERALD_BLOCK", 0);
             itemAmountInventory.put("REDSTONE_BLOCK", 0);
             itemAmountInventory.put("GOLD_BLOCK", 0);
-            itemAmountInventory.put("IRON_BLOCK", 1);
+            itemAmountInventory.put("IRON_BLOCK", 0);
             itemAmountInventory.put("COAL_BLOCK", 0);
-
-            itemAmountInventory.put("STONE", 0);
-            itemAmountInventory.put("COBBLESTONE", 0);
-            itemAmountInventory.put("DIORITE", 0);
-            itemAmountInventory.put("ANDESITE", 0);
-            itemAmountInventory.put("GRANITE", 0);
 
             itemAmountInventory.put("PRISMARINE_BRICKS", 0);
             itemAmountInventory.put("DARK_PRISMARINE", 0);
@@ -69,6 +69,12 @@ public class Stock {
             itemAmountInventory.put("OAK_LOG", 0);
 
             // * Set's the prices of the products
+
+            itemPriceDataBase.put("STONE", 1.1);
+            itemPriceDataBase.put("COBBLESTONE", 0.1);
+            itemPriceDataBase.put("DIORITE", 2.0);
+            itemPriceDataBase.put("ANDESITE", 3.0);
+            itemPriceDataBase.put("GRANITE", 3.0);
 
             itemPriceDataBase.put("DIAMOND", 17.0);
             itemPriceDataBase.put("LAPIS", 18.0);
@@ -94,12 +100,6 @@ public class Stock {
             itemPriceDataBase.put("IRON_BLOCK", 55.0);
             itemPriceDataBase.put("COAL_BLOCK", 20.0);
 
-            itemPriceDataBase.put("STONE", 1.1);
-            itemPriceDataBase.put("COBBLESTONE", 0.1);
-            itemPriceDataBase.put("DIORITE", 2.0);
-            itemPriceDataBase.put("ANDESITE", 3.0);
-            itemPriceDataBase.put("GRANITE", 3.0);
-
             itemPriceDataBase.put("PRISMARINE_BRICKS", 25.0);
             itemPriceDataBase.put("DARK_PRISMARINE", 12.0);
             itemPriceDataBase.put("QUARTZ", 5.0);
@@ -112,6 +112,12 @@ public class Stock {
             itemPriceDataBase.put("OAK_LOG", 1.0);
 
             // * Set's the item
+
+            itemItems.put("STONE", Items.STONE);
+            itemItems.put("COBBLESTONE", Items.COBBLESTONE);
+            itemItems.put("DIORITE", Items.DIORITE);
+            itemItems.put("ANDESITE", Items.ANDESITE);
+            itemItems.put("GRANITE", Items.GRANITE);
 
             itemItems.put("DIAMOND", Items.DIAMOND);
             itemItems.put("LAPIS", Items.LAPIS_LAZULI);
@@ -136,12 +142,6 @@ public class Stock {
             itemItems.put("GOLD_BLOCK", Items.GOLD_BLOCK);
             itemItems.put("IRON_BLOCK", Items.IRON_BLOCK);
             itemItems.put("COAL_BLOCK", Items.COAL_BLOCK);
-
-            itemItems.put("STONE", Items.STONE);
-            itemItems.put("COBBLESTONE", Items.COBBLESTONE);
-            itemItems.put("DIORITE", Items.DIORITE);
-            itemItems.put("ANDESITE", Items.ANDESITE);
-            itemItems.put("GRANITE", Items.GRANITE);
 
             itemItems.put("PRISMARINE_BRICKS", Items.PRISMARINE_BRICKS);
             itemItems.put("DARK_PRISMARINE", Items.DARK_PRISMARINE);
