@@ -1,14 +1,10 @@
 package nl.tijsbeek.torchcraftexcelmod.Event;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import nl.tijsbeek.torchcraftexcelmod.Gui.RenderGuiHandler;
-import nl.tijsbeek.torchcraftexcelmod.Mod.Inventory;
 import nl.tijsbeek.torchcraftexcelmod.torchcraftexcelmod;
 
 import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.CalculateInventoryWorth;
@@ -18,9 +14,6 @@ import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.startCalculationsInt;
 public class ClientTickEvent extends Event {
 
     int tick = 0;
-    boolean calculationsStarted = true;
-    Inventory inventory = new Inventory();
-    RenderGuiHandler renderGuiHandler = new RenderGuiHandler();
 
 
     // ! If I switch servers, it takes a few seconds / minutes to start it again. Don't understand why or how?

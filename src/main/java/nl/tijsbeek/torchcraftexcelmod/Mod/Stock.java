@@ -13,7 +13,7 @@ public class Stock {
     static public HashMap<String, Double> itemPriceDataBase = new HashMap<String, Double>();
     static HashMap<String, Item> itemItems = new HashMap<String, Item>();
 
-    static int assignValues = 0;
+    static public int assignValues = 0;
 
     static public int startCalculationsInt = 0;
 
@@ -24,68 +24,135 @@ public class Stock {
         if (assignValues != 1) {
             Minecraft.getInstance().player.sendMessage(new StringTextComponent("Assigning the values"));
 
-            itemAmountInventory.put("STONE", 0);
-            itemAmountInventory.put("GOLD_ORE", 0);
-            itemAmountInventory.put("IRON_ORE", 1);
-            itemAmountInventory.put("COAL_ORE", 0);
-            itemAmountInventory.put("LAPIS_ORE", 0);
+            // * Assign's how many times the specified item is inside the inventory (default is 0
+            // ! Add a GUI or a import from excel function
+
+            itemAmountInventory.put("DIAMOND", 0);
+            itemAmountInventory.put("LAPIS", 0);
+            itemAmountInventory.put("EMERALD", 0);
+            itemAmountInventory.put("REDSTONE", 0);
+            itemAmountInventory.put("GOLD", 0);
+            itemAmountInventory.put("IRON", 0);
+            itemAmountInventory.put("COAL", 0);
+
             itemAmountInventory.put("DIAMOND_ORE", 0);
+            itemAmountInventory.put("LAPIS_ORE", 0);
             itemAmountInventory.put("EMERALD_ORE", 0);
+            itemAmountInventory.put("REDSTONE_ORE", 0);
+            itemAmountInventory.put("GOLD_ORE", 0);
+            itemAmountInventory.put("IRON_ORE", 0);
+            itemAmountInventory.put("COAL_ORE", 0);
+
+            itemAmountInventory.put("DIAMOND_BLOCK", 0);
+            itemAmountInventory.put("LAPIS_BLOCK", 0);
+            itemAmountInventory.put("EMERALD_BLOCK", 0);
+            itemAmountInventory.put("REDSTONE_BLOCK", 0);
+            itemAmountInventory.put("GOLD_BLOCK", 0);
+            itemAmountInventory.put("IRON_BLOCK", 1);
+            itemAmountInventory.put("COAL_BLOCK", 0);
+
+            itemAmountInventory.put("STONE", 0);
+            itemAmountInventory.put("COBBLESTONE", 0);
             itemAmountInventory.put("DIORITE", 0);
             itemAmountInventory.put("ANDESITE", 0);
             itemAmountInventory.put("GRANITE", 0);
-            itemAmountInventory.put("REDSTONE_ORE", 0);
+
             itemAmountInventory.put("PRISMARINE_BRICKS", 0);
             itemAmountInventory.put("DARK_PRISMARINE", 0);
+            itemAmountInventory.put("QUARTZ", 0);
             itemAmountInventory.put("NETHER_QUARTZ_ORE", 0);
+            itemAmountInventory.put("QUARTZ_BLOCK", 0);
             itemAmountInventory.put("SEA_LATERN", 0);
             itemAmountInventory.put("RED_SANDSTONE", 0);
             itemAmountInventory.put("SANDSTONE", 0);
             itemAmountInventory.put("GRAVEL", 0);
             itemAmountInventory.put("OAK_LOG", 0);
-            itemAmountInventory.put("COAL_BLOCKS", 0);
 
-            itemPriceDataBase.put("STONE", 1.1);
+            // * Set's the prices of the products
+
+            itemPriceDataBase.put("DIAMOND", 17.0);
+            itemPriceDataBase.put("LAPIS", 18.0);
+            itemPriceDataBase.put("EMERALD", 12.0);
+            itemPriceDataBase.put("REDSTONE", 14.0);
+            itemPriceDataBase.put("GOLD", 12.0);
+            itemPriceDataBase.put("IRON", 7.0);
+            itemPriceDataBase.put("COAL", 2.375);
+
+            itemPriceDataBase.put("DIAMOND_ORE", 32.0);
+            itemPriceDataBase.put("LAPIS_ORE", 140.0);
+            itemPriceDataBase.put("EMERALD_ORE", 24.0);
+            itemPriceDataBase.put("REDSTONE_ORE", 28.0);
             itemPriceDataBase.put("GOLD_ORE", 16.406);
             itemPriceDataBase.put("IRON_ORE", 14.063);
             itemPriceDataBase.put("COAL_ORE", 4.0);
-            itemPriceDataBase.put("LAPIS_ORE", 140.0);
-            itemPriceDataBase.put("DIAMOND_ORE", 32.0);
-            itemPriceDataBase.put("EMERALD_ORE", 24.0);
+
+            itemPriceDataBase.put("DIAMOND_BLOCK", 149.0);
+            itemPriceDataBase.put("LAPIS_BLOCK", 168.0);
+            itemPriceDataBase.put("EMERALD_BLOCK", 111.0);
+            itemPriceDataBase.put("REDSTONE_BLOCK", 130.0);
+            itemPriceDataBase.put("GOLD_BLOCK", 92.0);
+            itemPriceDataBase.put("IRON_BLOCK", 55.0);
+            itemPriceDataBase.put("COAL_BLOCK", 20.0);
+
+            itemPriceDataBase.put("STONE", 1.1);
+            itemPriceDataBase.put("COBBLESTONE", 0.1);
             itemPriceDataBase.put("DIORITE", 2.0);
             itemPriceDataBase.put("ANDESITE", 3.0);
             itemPriceDataBase.put("GRANITE", 3.0);
-            itemPriceDataBase.put("REDSTONE_ORE_PRICE", 28.0);
+
             itemPriceDataBase.put("PRISMARINE_BRICKS", 25.0);
             itemPriceDataBase.put("DARK_PRISMARINE", 12.0);
-            itemPriceDataBase.put("NETHER_QUARTZ_ORE", 5.0);
+            itemPriceDataBase.put("QUARTZ", 5.0);
+            itemPriceDataBase.put("NETHER_QUARTZ_ORE", 10.0);
+            itemPriceDataBase.put("QUARTZ_BLOCK", 20.0);
             itemPriceDataBase.put("SEA_LATERN", 35.0);
             itemPriceDataBase.put("RED_SANDSTONE", 6.0);
             itemPriceDataBase.put("SANDSTONE", 5.0);
             itemPriceDataBase.put("GRAVEL", 1.0);
             itemPriceDataBase.put("OAK_LOG", 1.0);
-            itemPriceDataBase.put("COAL_BLOCKS", 19.0);
 
-            itemItems.put("STONE", Items.STONE);
+            // * Set's the item
+
+            itemItems.put("DIAMOND", Items.DIAMOND);
+            itemItems.put("LAPIS", Items.LAPIS_LAZULI);
+            itemItems.put("EMERALD", Items.EMERALD);
+            itemItems.put("REDSTONE", Items.REDSTONE);
+            itemItems.put("GOLD", Items.GOLD_INGOT);
+            itemItems.put("IRON", Items.IRON_INGOT);
+            itemItems.put("COAL", Items.COAL);
+
+            itemItems.put("DIAMOND_ORE", Items.DIAMOND_ORE);
+            itemItems.put("LAPIS_ORE", Items.LAPIS_ORE);
+            itemItems.put("EMERALD_ORE", Items.EMERALD_ORE);
+            itemItems.put("REDSTONE_ORE", Items.REDSTONE_ORE);
             itemItems.put("GOLD_ORE", Items.GOLD_ORE);
             itemItems.put("IRON_ORE", Items.IRON_ORE);
             itemItems.put("COAL_ORE", Items.COAL_ORE);
-            itemItems.put("LAPIS_ORE", Items.LAPIS_ORE);
-            itemItems.put("DIAMOND_ORE", Items.DIAMOND_ORE);
-            itemItems.put("EMERALD_ORE", Items.EMERALD_ORE);
+
+            itemItems.put("DIAMOND_BLOCK", Items.DIAMOND_BLOCK);
+            itemItems.put("LAPIS_BLOCK", Items.LAPIS_BLOCK);
+            itemItems.put("EMERALD_BLOCK", Items.EMERALD_BLOCK);
+            itemItems.put("REDSTONE_BLOCK", Items.REDSTONE_BLOCK);
+            itemItems.put("GOLD_BLOCK", Items.GOLD_BLOCK);
+            itemItems.put("IRON_BLOCK", Items.IRON_BLOCK);
+            itemItems.put("COAL_BLOCK", Items.COAL_BLOCK);
+
+            itemItems.put("STONE", Items.STONE);
+            itemItems.put("COBBLESTONE", Items.COBBLESTONE);
             itemItems.put("DIORITE", Items.DIORITE);
             itemItems.put("ANDESITE", Items.ANDESITE);
             itemItems.put("GRANITE", Items.GRANITE);
-            itemItems.put("REDSTONE_ORE", Items.REDSTONE_ORE);
+
             itemItems.put("PRISMARINE_BRICKS", Items.PRISMARINE_BRICKS);
             itemItems.put("DARK_PRISMARINE", Items.DARK_PRISMARINE);
+            itemItems.put("QUARTZ", Items.QUARTZ);
             itemItems.put("NETHER_QUARTZ_ORE", Items.NETHER_QUARTZ_ORE);
+            itemItems.put("QUARTZ_BLOCK", Items.QUARTZ_BLOCK);
             itemItems.put("SEA_LANTERN", Items.SEA_LANTERN);
             itemItems.put("RED_SANDSTONE", Items.RED_SANDSTONE);
             itemItems.put("SANDSTONE", Items.SANDSTONE);
             itemItems.put("GRAVEL", Items.GRAVEL);
             itemItems.put("OAK_LOG", Items.OAK_LOG);
-            itemItems.put("COAL_BLOCK", Items.COAL_BLOCK);
 
             assignValues = 1;
             Minecraft.getInstance().player.sendMessage(new StringTextComponent("The values have been assigned."));
@@ -99,7 +166,7 @@ public class Stock {
     }
 
     public static void CalculateInventoryWorth(){
-
+        inventoryWorth = 0;
         // * For every item it checks how many items of in your inventory are
         itemItems.forEach((key, value)-> {
             itemAmountInventory.replace(key, count(value));
