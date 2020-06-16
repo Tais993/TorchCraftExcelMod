@@ -17,7 +17,7 @@ public class Stock {
 
     static public int startCalculationsInt = 0;
 
-    public static void main() {
+    public static void main(int i) {
         Minecraft.getInstance().player.sendMessage(new StringTextComponent("Main has been reached"));
 
         // * If the main is already run it won't override the old values
@@ -26,6 +26,11 @@ public class Stock {
 
             // * Assign's how many times the specified item is inside the inventory (default is 0
             // ! Add a GUI or a import from excel function
+
+            if(i == 1){
+                itemAmountInventory.put("GRAVEL", 0);
+                itemAmountInventory.put("FLINT", 0);
+            }
 
             itemAmountInventory.put("STONE", 0);
             itemAmountInventory.put("COBBLESTONE", 0);
@@ -70,19 +75,30 @@ public class Stock {
 
             // * Set's the prices of the products
 
-            itemPriceDataBase.put("STONE", 1.1);
-            itemPriceDataBase.put("COBBLESTONE", 0.1);
+            // * 0 for normal
+            // * 1 for EGS
+
+            if(i == 1){
+                itemPriceDataBase.put("STONE", 3.90625);
+                itemPriceDataBase.put("COBBLESTONE", 0.78125);
+                itemPriceDataBase.put("GRAVEL", 1.5625);
+                itemPriceDataBase.put("FLINT", 2.734375);
+                itemPriceDataBase.put("COAL", 1.953125);
+            } else {
+                itemPriceDataBase.put("COAL", 2.375);
+                itemPriceDataBase.put("STONE", 1.1);
+                itemPriceDataBase.put("COBBLESTONE", 0.1);
+            }
+
             itemPriceDataBase.put("DIORITE", 2.0);
             itemPriceDataBase.put("ANDESITE", 3.0);
             itemPriceDataBase.put("GRANITE", 3.0);
-
             itemPriceDataBase.put("DIAMOND", 17.0);
             itemPriceDataBase.put("LAPIS", 18.0);
             itemPriceDataBase.put("EMERALD", 12.0);
             itemPriceDataBase.put("REDSTONE", 14.0);
             itemPriceDataBase.put("GOLD", 12.0);
             itemPriceDataBase.put("IRON", 7.0);
-            itemPriceDataBase.put("COAL", 2.375);
 
             itemPriceDataBase.put("DIAMOND_ORE", 32.0);
             itemPriceDataBase.put("LAPIS_ORE", 140.0);
@@ -112,6 +128,10 @@ public class Stock {
             itemPriceDataBase.put("OAK_LOG", 1.0);
 
             // * Set's the item
+            if(i == 1) {
+                itemItems.put("GRAVEL", Items.GRAVEL);
+                itemItems.put("FLINT", Items.FLINT);
+            }
 
             itemItems.put("STONE", Items.STONE);
             itemItems.put("COBBLESTONE", Items.COBBLESTONE);
