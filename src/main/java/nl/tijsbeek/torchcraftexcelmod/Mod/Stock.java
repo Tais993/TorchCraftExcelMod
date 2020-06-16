@@ -185,6 +185,7 @@ public class Stock {
         itemItems.forEach((key, value)-> {
             itemAmountInventory.replace(key, 0);
         });
+        inventoryWorth = 0;
     }
 
     // * Counts the items in inventory
