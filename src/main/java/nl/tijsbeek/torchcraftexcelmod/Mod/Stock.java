@@ -6,8 +6,11 @@ import net.minecraft.item.Items;
 import net.minecraft.util.text.StringTextComponent;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class Stock {
+
+    static public LinkedList<String> itemOrderedKeys = new LinkedList<String>();
 
     static public HashMap<String, Integer> itemAmountInventory = new HashMap<String, Integer>();
     static public HashMap<String, Double> itemPriceDataBase = new HashMap<String, Double>();
@@ -17,7 +20,7 @@ public class Stock {
 
     static public int startCalculationsInt = 0;
 
-    public static void main(int i) {
+    public static void main() {
         Minecraft.getInstance().player.sendMessage(new StringTextComponent("Main has been reached"));
 
         // * If the main is already run it won't override the old values
@@ -27,10 +30,47 @@ public class Stock {
             // * Assign's how many times the specified item is inside the inventory (default is 0
             // ! Add a GUI or a import from excel function
 
-            if(i == 1){
-                itemAmountInventory.put("GRAVEL", 0);
-                itemAmountInventory.put("FLINT", 0);
-            }
+            // * Allows me to have a ordered list.
+
+            itemOrderedKeys.add("STONE");
+            itemOrderedKeys.add("COBBLESTONE");
+            itemOrderedKeys.add("DIORITE");
+            itemOrderedKeys.add("ANDESITE");
+            itemOrderedKeys.add("GRANITE");
+
+            itemOrderedKeys.add("DIAMOND");
+            itemOrderedKeys.add("LAPIS");
+            itemOrderedKeys.add("EMERALD");
+            itemOrderedKeys.add("REDSTONE");
+            itemOrderedKeys.add("GOLD");
+            itemOrderedKeys.add("IRON");
+            itemOrderedKeys.add("COAL");
+
+            itemOrderedKeys.add("DIAMOND_ORE");
+            itemOrderedKeys.add("LAPIS_ORE");
+            itemOrderedKeys.add("EMERALD_ORE");
+            itemOrderedKeys.add("REDSTONE_ORE");
+            itemOrderedKeys.add("GOLD_ORE");
+            itemOrderedKeys.add("IRON_ORE");
+            itemOrderedKeys.add("COAL_ORE");
+
+            itemOrderedKeys.add("DIAMOND_BLOCK");
+            itemOrderedKeys.add("LAPIS_BLOCK");
+            itemOrderedKeys.add("EMERALD_BLOCK");
+            itemOrderedKeys.add("REDSTONE_BLOCK");
+            itemOrderedKeys.add("GOLD_BLOCK");
+            itemOrderedKeys.add("IRON_BLOCK");
+            itemOrderedKeys.add("COAL_BLOCK");
+
+            itemOrderedKeys.add("PRISMARINE_BRICKS");
+            itemOrderedKeys.add("DARK_PRISMARINE");
+            itemOrderedKeys.add("QUARTZ");
+            itemOrderedKeys.add("NETHER_QUARTZ_ORE");
+            itemOrderedKeys.add("QUARTZ_BLOCK");
+            itemOrderedKeys.add("GRAVEL");
+            itemOrderedKeys.add("OAK_LOG");
+
+            // * Assigns all items a amount in inventory
 
             itemAmountInventory.put("STONE", 0);
             itemAmountInventory.put("COBBLESTONE", 0);
@@ -67,8 +107,6 @@ public class Stock {
             itemAmountInventory.put("QUARTZ", 0);
             itemAmountInventory.put("NETHER_QUARTZ_ORE", 0);
             itemAmountInventory.put("QUARTZ_BLOCK", 0);
-            itemAmountInventory.put("SEA_LATERN", 0);
-            itemAmountInventory.put("RED_SANDSTONE", 0);
             itemAmountInventory.put("SANDSTONE", 0);
             itemAmountInventory.put("GRAVEL", 0);
             itemAmountInventory.put("OAK_LOG", 0);
@@ -78,17 +116,9 @@ public class Stock {
             // * 0 for normal
             // * 1 for EGS
 
-            if(i == 1){
-                itemPriceDataBase.put("STONE", 3.90625);
-                itemPriceDataBase.put("COBBLESTONE", 0.78125);
-                itemPriceDataBase.put("GRAVEL", 1.5625);
-                itemPriceDataBase.put("FLINT", 2.734375);
-                itemPriceDataBase.put("COAL", 1.953125);
-            } else {
-                itemPriceDataBase.put("COAL", 2.375);
-                itemPriceDataBase.put("STONE", 1.1);
-                itemPriceDataBase.put("COBBLESTONE", 0.1);
-            }
+            itemPriceDataBase.put("COAL", 2.375);
+            itemPriceDataBase.put("STONE", 1.1);
+            itemPriceDataBase.put("COBBLESTONE", 0.1);
 
             itemPriceDataBase.put("DIORITE", 2.0);
             itemPriceDataBase.put("ANDESITE", 3.0);
@@ -121,17 +151,11 @@ public class Stock {
             itemPriceDataBase.put("QUARTZ", 5.0);
             itemPriceDataBase.put("NETHER_QUARTZ_ORE", 10.0);
             itemPriceDataBase.put("QUARTZ_BLOCK", 20.0);
-            itemPriceDataBase.put("SEA_LATERN", 35.0);
-            itemPriceDataBase.put("RED_SANDSTONE", 6.0);
             itemPriceDataBase.put("SANDSTONE", 5.0);
             itemPriceDataBase.put("GRAVEL", 1.0);
             itemPriceDataBase.put("OAK_LOG", 1.0);
 
             // * Set's the item
-            if(i == 1) {
-                itemItems.put("GRAVEL", Items.GRAVEL);
-                itemItems.put("FLINT", Items.FLINT);
-            }
 
             itemItems.put("STONE", Items.STONE);
             itemItems.put("COBBLESTONE", Items.COBBLESTONE);
@@ -168,8 +192,6 @@ public class Stock {
             itemItems.put("QUARTZ", Items.QUARTZ);
             itemItems.put("NETHER_QUARTZ_ORE", Items.NETHER_QUARTZ_ORE);
             itemItems.put("QUARTZ_BLOCK", Items.QUARTZ_BLOCK);
-            itemItems.put("SEA_LANTERN", Items.SEA_LANTERN);
-            itemItems.put("RED_SANDSTONE", Items.RED_SANDSTONE);
             itemItems.put("SANDSTONE", Items.SANDSTONE);
             itemItems.put("GRAVEL", Items.GRAVEL);
             itemItems.put("OAK_LOG", Items.OAK_LOG);
@@ -188,13 +210,14 @@ public class Stock {
     public static void CalculateInventoryWorth(){
         inventoryWorth = 0;
         // * For every item it checks how many items of in your inventory are
-        itemItems.forEach((key, value)-> {
-            itemAmountInventory.replace(key, count(value));
+
+        itemOrderedKeys.forEach((value) -> {
+            itemAmountInventory.replace(value, count(itemItems.get(value)));
         });
 
         // * How many items someone has * the price it's worth
-        itemAmountInventory.forEach((key, value)-> {
-            inventoryWorth += value * itemPriceDataBase.getOrDefault(key, 0.0);
+        itemOrderedKeys.forEach((value)-> {
+            inventoryWorth += itemAmountInventory.get(value) * itemPriceDataBase.getOrDefault(value, 0.0);
         });
 
 //        Minecraft.getInstance().player.sendMessage(new StringTextComponent("Total inventory worth :" + getInventoryWorth()));

@@ -29,7 +29,9 @@ credits="Thanks to Dirk for this idea, it was fun working on it." #optional
 authors="Tijsdieman, Dirk" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-
+This mod calculates how much money your inventory is worth, this is based for Prison servers.
+You can export it to a excel file using ?exportexcel
+The option to change prices will be added.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.examplemod]] #optional
