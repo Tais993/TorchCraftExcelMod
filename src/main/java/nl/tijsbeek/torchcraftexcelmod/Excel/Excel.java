@@ -4,9 +4,8 @@ import org.apache.commons.io.FileUtils;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.*;
 
@@ -53,7 +52,7 @@ public class Excel{
         try {
 
             itemOrderedKeys.forEach((value) -> {
-                pw.print(itemAmountInventory.get(value) + " " + value + " ;");
+                pw.print(itemAmountInventory.get(value));
             });
             pw.print(";" + getInventoryWorth() + ";");
 
@@ -70,7 +69,64 @@ public class Excel{
 
     // ! This is important, if this is done I can start rolling the mod out to others.
 
-    public static void importExcel(){
+    public static void importExcel() throws IOException {
+        String filePath2 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod";
+        System.out.println(filePath2);
 
+        File file = new File(filePath2);
+
+        if (!file.exists()) {
+            file.mkdir();
+            System.err.println("Directory should be made");
+        }
+        importPrice();
+    }
+
+    public static void importPrice() throws IOException {
+        String filePathImport = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod\\prices.csv";
+        String row = null;
+
+        System.err.println(filePathImport);
+
+        File file = new File(filePathImport);
+
+        System.err.println(file);
+
+
+        if (!file.exists()) {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+        }
+
+        FileReader fileReader = new FileReader(file);
+        BufferedReader csvReader = new BufferedReader(fileReader);
+
+        x = new Scanner(new File(filePathImport));
+        x.useDelimiter("[,\n]");
+
+        while (true) {
+            try {
+                if (!((row = (csvReader.readLine())) != null)) {
+                    System.err.println("file was empty");
+                    break;
+                } else {
+                    itemOrderedKeys.forEach((value) -> {
+                        String line = null;
+                        try {
+                            if(((line = (csvReader.readLine())) != null)) {
+                                itemPriceDataBase.replace(value, (double) Integer.parseInt(line));
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                }
+                System.err.println("file wasn't empty");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        x.close();
+        csvReader.close();
     }
 }

@@ -32,12 +32,6 @@ public class Stock {
 
             // * Allows me to have a ordered list.
 
-            itemOrderedKeys.add("STONE");
-            itemOrderedKeys.add("COBBLESTONE");
-            itemOrderedKeys.add("DIORITE");
-            itemOrderedKeys.add("ANDESITE");
-            itemOrderedKeys.add("GRANITE");
-
             itemOrderedKeys.add("DIAMOND");
             itemOrderedKeys.add("LAPIS");
             itemOrderedKeys.add("EMERALD");
@@ -62,21 +56,30 @@ public class Stock {
             itemOrderedKeys.add("IRON_BLOCK");
             itemOrderedKeys.add("COAL_BLOCK");
 
-            itemOrderedKeys.add("PRISMARINE_BRICKS");
-            itemOrderedKeys.add("DARK_PRISMARINE");
+            itemOrderedKeys.add("COBBLESTONE");
+            itemOrderedKeys.add("STONE");
+            itemOrderedKeys.add("DIORITE");
+            itemOrderedKeys.add("ANDESITE");
+            itemOrderedKeys.add("GRANITE");
             itemOrderedKeys.add("QUARTZ");
             itemOrderedKeys.add("NETHER_QUARTZ_ORE");
             itemOrderedKeys.add("QUARTZ_BLOCK");
-            itemOrderedKeys.add("GRAVEL");
+            itemOrderedKeys.add("END_STONE");
+
             itemOrderedKeys.add("OAK_LOG");
+            itemOrderedKeys.add("LEATHER");
+            itemOrderedKeys.add("PACKED_ICE");
+            itemOrderedKeys.add("RED_SANDSTONE");
+            itemOrderedKeys.add("PRISMARINE_BRICKS");
+            itemOrderedKeys.add("DARK_PRISMARINE");
+            itemOrderedKeys.add("SEA_LATERN");
+            itemOrderedKeys.add("SAND");
+            itemOrderedKeys.add("SANDSTONE");
+            itemOrderedKeys.add("GRAVEL");
+            itemOrderedKeys.add("STRING");
+            itemOrderedKeys.add("FLINT");
 
             // * Assigns all items a amount in inventory
-
-            itemAmountInventory.put("STONE", 0);
-            itemAmountInventory.put("COBBLESTONE", 0);
-            itemAmountInventory.put("DIORITE", 0);
-            itemAmountInventory.put("ANDESITE", 0);
-            itemAmountInventory.put("GRANITE", 0);
 
             itemAmountInventory.put("DIAMOND", 0);
             itemAmountInventory.put("LAPIS", 0);
@@ -102,33 +105,38 @@ public class Stock {
             itemAmountInventory.put("IRON_BLOCK", 0);
             itemAmountInventory.put("COAL_BLOCK", 0);
 
-            itemAmountInventory.put("PRISMARINE_BRICKS", 0);
-            itemAmountInventory.put("DARK_PRISMARINE", 0);
+            itemAmountInventory.put("COBBLESTONE", 0);
+            itemAmountInventory.put("STONE", 0);
+            itemAmountInventory.put("DIORITE", 0);
+            itemAmountInventory.put("ANDESITE", 0);
+            itemAmountInventory.put("GRANITE", 0);
             itemAmountInventory.put("QUARTZ", 0);
             itemAmountInventory.put("NETHER_QUARTZ_ORE", 0);
             itemAmountInventory.put("QUARTZ_BLOCK", 0);
+            itemAmountInventory.put("END_STONE", 0);
+
+            itemAmountInventory.put("OAK_LOG", 0);
+            itemAmountInventory.put("LEATHER", 0);
+            itemAmountInventory.put("PACKED_ICE", 0);
+            itemAmountInventory.put("RED_SANDSTONE", 0);
+            itemAmountInventory.put("PRISMARINE_BRICKS", 0);
+            itemAmountInventory.put("DARK_PRISMARINE", 0);
+            itemAmountInventory.put("SEA_LATERN", 0);
+            itemAmountInventory.put("SAND", 0);
             itemAmountInventory.put("SANDSTONE", 0);
             itemAmountInventory.put("GRAVEL", 0);
-            itemAmountInventory.put("OAK_LOG", 0);
+            itemAmountInventory.put("STRING", 0);
+            itemAmountInventory.put("FLINT", 0);
 
             // * Set's the prices of the products
 
-            // * 0 for normal
-            // * 1 for EGS
-
-            itemPriceDataBase.put("COAL", 2.375);
-            itemPriceDataBase.put("STONE", 1.1);
-            itemPriceDataBase.put("COBBLESTONE", 0.1);
-
-            itemPriceDataBase.put("DIORITE", 2.0);
-            itemPriceDataBase.put("ANDESITE", 3.0);
-            itemPriceDataBase.put("GRANITE", 3.0);
             itemPriceDataBase.put("DIAMOND", 17.0);
             itemPriceDataBase.put("LAPIS", 18.0);
             itemPriceDataBase.put("EMERALD", 12.0);
             itemPriceDataBase.put("REDSTONE", 14.0);
             itemPriceDataBase.put("GOLD", 12.0);
             itemPriceDataBase.put("IRON", 7.0);
+            itemPriceDataBase.put("COAL", 2.375);
 
             itemPriceDataBase.put("DIAMOND_ORE", 32.0);
             itemPriceDataBase.put("LAPIS_ORE", 140.0);
@@ -146,22 +154,30 @@ public class Stock {
             itemPriceDataBase.put("IRON_BLOCK", 55.0);
             itemPriceDataBase.put("COAL_BLOCK", 20.0);
 
-            itemPriceDataBase.put("PRISMARINE_BRICKS", 25.0);
-            itemPriceDataBase.put("DARK_PRISMARINE", 12.0);
+            itemPriceDataBase.put("COBBLESTONE", 0.1);
+            itemPriceDataBase.put("STONE", 1.1);
+            itemPriceDataBase.put("DIORITE", 2.0);
+            itemPriceDataBase.put("ANDESITE", 3.0);
+            itemPriceDataBase.put("GRANITE", 3.0);
             itemPriceDataBase.put("QUARTZ", 5.0);
             itemPriceDataBase.put("NETHER_QUARTZ_ORE", 10.0);
             itemPriceDataBase.put("QUARTZ_BLOCK", 20.0);
+            itemPriceDataBase.put("END_STONE", 50.0);
+
+            itemPriceDataBase.put("OAK_LOG", 1.0);
+            itemPriceDataBase.put("LEATHER", 2.50);
+            itemPriceDataBase.put("PACKED_ICE", 50.0);
+            itemPriceDataBase.put("RED_SANDSTONE", 1.9);
+            itemPriceDataBase.put("PRISMARINE_BRICKS", 6.0);
+            itemPriceDataBase.put("DARK_PRISMARINE", 25.0);
+            itemPriceDataBase.put("SEA_LATERN", 35.0);
+            itemPriceDataBase.put("SAND", 1.0);
             itemPriceDataBase.put("SANDSTONE", 5.0);
             itemPriceDataBase.put("GRAVEL", 1.0);
-            itemPriceDataBase.put("OAK_LOG", 1.0);
+            itemPriceDataBase.put("STRING", 7500.0);
+            itemPriceDataBase.put("FLINT", 1.2);
 
             // * Set's the item
-
-            itemItems.put("STONE", Items.STONE);
-            itemItems.put("COBBLESTONE", Items.COBBLESTONE);
-            itemItems.put("DIORITE", Items.DIORITE);
-            itemItems.put("ANDESITE", Items.ANDESITE);
-            itemItems.put("GRANITE", Items.GRANITE);
 
             itemItems.put("DIAMOND", Items.DIAMOND);
             itemItems.put("LAPIS", Items.LAPIS_LAZULI);
@@ -187,14 +203,28 @@ public class Stock {
             itemItems.put("IRON_BLOCK", Items.IRON_BLOCK);
             itemItems.put("COAL_BLOCK", Items.COAL_BLOCK);
 
-            itemItems.put("PRISMARINE_BRICKS", Items.PRISMARINE_BRICKS);
-            itemItems.put("DARK_PRISMARINE", Items.DARK_PRISMARINE);
+            itemItems.put("COBBLESTONE", Items.COBBLESTONE);
+            itemItems.put("STONE", Items.STONE);
+            itemItems.put("DIORITE", Items.DIORITE);
+            itemItems.put("ANDESITE", Items.ANDESITE);
+            itemItems.put("GRANITE", Items.GRANITE);
             itemItems.put("QUARTZ", Items.QUARTZ);
             itemItems.put("NETHER_QUARTZ_ORE", Items.NETHER_QUARTZ_ORE);
             itemItems.put("QUARTZ_BLOCK", Items.QUARTZ_BLOCK);
+            itemItems.put("END_STONE", Items.END_STONE);
+
+            itemItems.put("OAK_LOG", Items.OAK_LOG);
+            itemItems.put("LEATHER", Items.LEATHER);
+            itemItems.put("PACKED_ICE", Items.PACKED_ICE);
+            itemItems.put("RED_SANDSTONE", Items.RED_SANDSTONE);
+            itemItems.put("PRISMARINE_BRICKS", Items.PRISMARINE_BRICKS);
+            itemItems.put("DARK_PRISMARINE", Items.DARK_PRISMARINE);
+            itemItems.put("SEA_LATERN", Items.SEA_LANTERN);
+            itemItems.put("SAND", Items.SAND);
             itemItems.put("SANDSTONE", Items.SANDSTONE);
             itemItems.put("GRAVEL", Items.GRAVEL);
-            itemItems.put("OAK_LOG", Items.OAK_LOG);
+            itemItems.put("STRING", Items.STRING);
+            itemItems.put("FLINT", Items.FLINT);
 
             assignValues = 1;
             Minecraft.getInstance().player.sendMessage(new StringTextComponent("The values have been assigned."));
