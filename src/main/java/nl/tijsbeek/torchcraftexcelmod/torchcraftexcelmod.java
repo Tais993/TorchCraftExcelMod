@@ -6,7 +6,15 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent;
 import nl.tijsbeek.torchcraftexcelmod.Event.ClientTickEvent;
+import nl.tijsbeek.torchcraftexcelmod.Excel.Excel;
 import nl.tijsbeek.torchcraftexcelmod.Gui.*;
+import nl.tijsbeek.torchcraftexcelmod.Mod.Stock;
+import nl.tijsbeek.torchcraftexcelmod.Settings.Settings;
+
+import java.io.IOException;
+
+import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.startCalculationsInt;
+import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.autoPricesImport;
 
 // * The value here should match an entry in the META-INF/mods.toml file
 @Mod("torchcraftexcelmod")
@@ -16,16 +24,25 @@ public class torchcraftexcelmod {
 
     ChatEvent chatEvent = new ChatEvent();
 
-    public torchcraftexcelmod() {
+    public torchcraftexcelmod() throws IOException {
         // * Register the setup method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().register(chatEvent);
         MinecraftForge.EVENT_BUS.register(new ClientTickEvent());
         MinecraftForge.EVENT_BUS.register(new RenderGuiHandler());
+
+        Stock.main();
+        startCalculationsInt = 1;
+
+        Settings.settings();
+        Settings.importSettings();
+
+        if (autoPricesImport){
+            Excel.importExcel();
+        }
     }
 
     public static void main(String[] args) {
-
     }
 
     private void setup(final FMLCommonSetupEvent event) {

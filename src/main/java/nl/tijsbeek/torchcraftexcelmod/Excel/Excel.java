@@ -5,16 +5,11 @@ import org.apache.commons.io.FileUtils;
 import javax.swing.filechooser.FileSystemView;
 import java.io.*;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.*;
 
 public class Excel{
     private static Scanner x;
-
-
-    // ! Export function is broken, hashmaps are random? Will look for a different method. (Maybe arrays?
-    // ! Export function isn't well coded, will get revamped!
 
     public static void excelExport() throws IOException {
         String filePath2 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod";
@@ -51,12 +46,8 @@ public class Excel{
 
         try {
 
-            itemOrderedKeys.forEach((value) -> {
-                pw.print(itemAmountInventory.get(value));
-            });
-            pw.print(";" + getInventoryWorth() + ";");
-
-            pw.println(itemAmountInventory.size());
+            itemOrderedKeys.forEach((value) -> pw.print(itemData.get(value).getItemsInInventory()));
+            pw.print(";" + inventoryWorth + ";");
 
         } catch (Exception e){
             System.err.println("Error" + e);
@@ -66,8 +57,6 @@ public class Excel{
         pw.flush();
         pw.close();
     }
-
-    // ! This is important, if this is done I can start rolling the mod out to others.
 
     public static void importExcel() throws IOException {
         String filePath2 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod";
@@ -105,15 +94,15 @@ public class Excel{
 
         while (true) {
             try {
-                if (!((row = (csvReader.readLine())) != null)) {
+                if ((row = (csvReader.readLine())) == null) {
                     System.err.println("file was empty");
                     break;
                 } else {
                     itemOrderedKeys.forEach((value) -> {
-                        String line = null;
+                        String line;
                         try {
                             if(((line = (csvReader.readLine())) != null)) {
-                                itemPriceDataBase.replace(value, (double) Integer.parseInt(line));
+                                itemData.get(value).setItemPrice( Double.parseDouble(line));
                             }
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -128,5 +117,9 @@ public class Excel{
 
         x.close();
         csvReader.close();
+    }
+
+    public static void makeFolder() {
+
     }
 }
