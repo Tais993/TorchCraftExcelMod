@@ -8,15 +8,16 @@ import net.minecraft.util.text.StringTextComponent;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.*;
+
 public class Stock {
 
     static public LinkedList<String> itemOrderedKeys = new LinkedList<>();
-
     static public HashMap<String, Stocks> itemData = new HashMap<>();
 
     static public int assignValues = 0;
-
     static public int startCalculationsInt = 0;
+    static public double balWorth = 0.0;
 
     public static void main() {
 
@@ -36,7 +37,7 @@ public class Stock {
             // * Imports the names, so I everything will be in the right order.
 
             itemOrderedKeys.add("DIAMOND");
-            itemOrderedKeys.add("LAPIS");
+            itemOrderedKeys.add("LAPIS_LAZULI");
             itemOrderedKeys.add("EMERALD");
             itemOrderedKeys.add("REDSTONE");
             itemOrderedKeys.add("GOLD");
@@ -86,7 +87,7 @@ public class Stock {
             // * Imports all data to a object
 
             itemData.put("DIAMOND", new Stocks(0, 17.0, Items.DIAMOND));
-            itemData.put("LAPIS", new Stocks(0, 18.0, Items.LAPIS_LAZULI));
+            itemData.put("LAPIS_LAZULI", new Stocks(0, 18.0, Items.LAPIS_LAZULI));
             itemData.put("EMERALD", new Stocks(0, 12.0, Items.EMERALD));
             itemData.put("REDSTONE", new Stocks(0, 14.0, Items.REDSTONE));
             itemData.put("GOLD", new Stocks(0, 12.0, Items.GOLD_INGOT));
@@ -150,6 +151,8 @@ public class Stock {
         // * It checks how many items of every item there are in your inventory
         itemOrderedKeys.forEach((value) -> itemData.get(value).setItemsInInventory(count(itemData.get(value).getItem())));
 
+        if (includeBalInCalculations) inventoryWorth = balWorth;
+
         // * How many items someone has * the price it's worth
         itemOrderedKeys.forEach((value)-> inventoryWorth += itemData.get(value).itemsInInventory * itemData.get(value).getItemPrice());
     }
@@ -163,5 +166,31 @@ public class Stock {
     // * Counts the items in inventory
     public static int count(Item item) {
         return Minecraft.getInstance().player != null ? Minecraft.getInstance().player.inventory.count(item) : 0;
+    }
+
+    // * Update the settings, so they will get applied.
+    public static void updateValueSettings () {
+
+        if (showCobblestoneAsStone) {
+            itemData.get("COBBLESTONE").setItemPrice(itemData.get("STONE").getItemPrice());
+        } else {
+            itemData.get("COBBLESTONE").setItemPrice(0.1);
+        }
+
+        if (showCoalOreAsCoal) {
+            if (showCoalAsCoalBlocks) {
+                itemData.get("COAL_ORE").setItemPrice(2.22);
+            } else {
+                itemData.get("COAL_ORE").setItemPrice(itemData.get("COAL").getItemPrice());
+            }
+        } else {
+            itemData.get("COAL").setItemPrice(2.22);
+        }
+
+        if (showLapisOreAsLapis) {
+            itemData.get("LAPIS_ORE").setItemPrice(itemData.get("LAPIS_LAZULI").getItemPrice());
+        } else {
+            itemData.get("COBBLESTONE").setItemPrice(2.375);
+        }
     }
 }

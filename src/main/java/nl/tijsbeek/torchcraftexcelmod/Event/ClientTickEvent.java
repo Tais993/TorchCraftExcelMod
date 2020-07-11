@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.Mod;
 import nl.tijsbeek.torchcraftexcelmod.torchcraftexcelmod;
 
 import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.*;
-import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.ticksToUpdate;
+import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.ticksUntilUpdate;
 
 @Mod.EventBusSubscriber(modid = torchcraftexcelmod.MOD_ID)
 public class ClientTickEvent extends Event {
@@ -25,7 +25,7 @@ public class ClientTickEvent extends Event {
             if (startCalculationsInt == 1) {
                 tick++;
                 // * Set's a tick waiter, so you can say per .. ticks it calculates everything.
-                if (tick >= ticksToUpdate) {
+                if (tick >= ticksUntilUpdate) {
                     CalculateInventoryWorth();
                     tick = 0;
                 }

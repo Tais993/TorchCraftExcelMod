@@ -1,10 +1,12 @@
 package nl.tijsbeek.torchcraftexcelmod;
 
+import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import nl.tijsbeek.torchcraftexcelmod.Event.ChatEvent;
+import nl.tijsbeek.torchcraftexcelmod.Event.ClientChatReceived;
 import nl.tijsbeek.torchcraftexcelmod.Event.ClientTickEvent;
 import nl.tijsbeek.torchcraftexcelmod.Excel.Excel;
 import nl.tijsbeek.torchcraftexcelmod.Gui.*;
@@ -29,6 +31,7 @@ public class torchcraftexcelmod {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().register(chatEvent);
         MinecraftForge.EVENT_BUS.register(new ClientTickEvent());
+        MinecraftForge.EVENT_BUS.register(new ClientChatReceived());
         MinecraftForge.EVENT_BUS.register(new RenderGuiHandler());
 
         Stock.main();
