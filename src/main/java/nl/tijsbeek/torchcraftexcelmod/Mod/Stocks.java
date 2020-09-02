@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 public class Stocks {
     // * Defines the variables of the object
     int itemsInInventory;
+    int itemsInChests;
     double itemPrice;
     Item item;
 
@@ -12,16 +13,33 @@ public class Stocks {
 
     public Stocks (int itemsInInventoryGiven, double itemPriceGiven, Item itemGiven) {
         this.itemsInInventory = itemsInInventoryGiven;
+        this.itemsInChests = 0;
         this.itemPrice = itemPriceGiven;
         this.item = itemGiven;
     }
 
     // * This function sets the Items in inventory.
-    // * Why this.itemsInInvetory?
-    // * Because it's a object, for every block I want the value to be different.
 
     public void setItemsInInventory(int itemsInInventoryGiven) {
         this.itemsInInventory = itemsInInventoryGiven;
+    }
+
+    // * This functions sets the item amount in chests
+
+    public void setItemsInChests(int ItemsInChestGiven) {
+        this.itemsInChests = ItemsInChestGiven;
+    }
+
+    // * This functions adds the item amount in chests
+
+    public void addsItemsInChests(int ItemsInChestGiven) {
+        this.itemsInChests = this.itemsInChests + ItemsInChestGiven;
+    }
+
+    // * This functions clears the item amount in chests
+
+    public void clearsItemsInChests() {
+        this.itemsInChests = 0;
     }
 
     // * This function sets the item price.
@@ -41,6 +59,10 @@ public class Stocks {
     public int getItemsInInventory() {
         return this.itemsInInventory;
     }
+
+    // * This functions gets how many items are in all chests
+
+    public int getItemsInChests() { return this.itemsInChests;}
 
     // * This function gets the price of the item
 

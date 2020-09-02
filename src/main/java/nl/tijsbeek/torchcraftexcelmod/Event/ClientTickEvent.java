@@ -1,21 +1,33 @@
 package nl.tijsbeek.torchcraftexcelmod.Event;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.Slot;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import nl.tijsbeek.torchcraftexcelmod.torchcraftexcelmod;
 
-import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.*;
+import java.util.List;
+
+import static nl.tijsbeek.torchcraftexcelmod.Gui.RenderGuiHandler.chestOpenedBefore;
+import static nl.tijsbeek.torchcraftexcelmod.Gui.RenderGuiHandler.renderChestModGui;
+import static nl.tijsbeek.torchcraftexcelmod.Mod.CalculateTotalWorth.*;
+import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.startCalculationsInt;
 import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.ticksUntilUpdate;
 
 @Mod.EventBusSubscriber(modid = torchcraftexcelmod.MOD_ID)
 public class ClientTickEvent extends Event {
 
     int tick = 0;
+    int ticksChest = 0;
+    int ticksChestGui = 0;
 
-    // ! If I switch servers, it takes a few seconds / minutes to start it again. Don't understand why or how?
+    static boolean checkChest = false;
+
+    // ! If the ticksUntilUpdate is low, the player will have big lag spikes when opening a chest.
 
     @SubscribeEvent
     public void clientTickEvent(TickEvent.ClientTickEvent event) {
@@ -26,8 +38,27 @@ public class ClientTickEvent extends Event {
                 tick++;
                 // * Set's a tick waiter, so you can say per .. ticks it calculates everything.
                 if (tick >= ticksUntilUpdate) {
+                    CountInventory();
                     CalculateInventoryWorth();
                     tick = 0;
+                }
+
+                if (checkChest) {
+                    if (ticksChest >= 3) {
+                        CountChest();
+                        ticksChest = 0;
+                        checkChest = false;
+                    }
+                    ticksChest++;
+                }
+
+                if (chestOpenedBefore){
+                    if (Minecraft.getInstance().player.openContainer.inventorySlots.size() == 46 && ticksChestGui >= 20) {
+                        chestOpenedBefore = false;
+                        ticksChestGui = 0;
+                    }
+                    Minecraft.getInstance().player.sendMessage(new StringTextComponent(Minecraft.getInstance().player.openContainer.inventorySlots.size() + ""));
+                    ticksChestGui++;
                 }
             }
         }
