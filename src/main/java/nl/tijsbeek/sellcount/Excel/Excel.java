@@ -1,4 +1,4 @@
-package nl.tijsbeek.torchcraftexcelmod.Excel;
+package nl.tijsbeek.sellcount.Excel;
 
 import org.apache.commons.io.FileUtils;
 
@@ -6,13 +6,13 @@ import javax.swing.filechooser.FileSystemView;
 import java.io.*;
 import java.util.Scanner;
 
-import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.*;
+import static nl.tijsbeek.sellcount.Mod.Stock.*;
 
-public class Excel{
+public class Excel {
     private static Scanner x;
 
     public static void excelExport() throws IOException {
-        String filePath2 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod";
+        String filePath2 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\SellCount";
         System.out.println(filePath2);
 
         File file = new File(filePath2);
@@ -25,8 +25,8 @@ public class Excel{
     }
 
     public static void editRecord() throws IOException {
-        File sourceTemplate = new File(FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod\\template.csv");
-        String filePath = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod\\output.csv";
+        File sourceTemplate = new File(FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\SellCount\\template.csv");
+        String filePath = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\SellCount\\output.csv";
         File copyTemplate = new File(filePath);
 
         System.err.println(filePath);
@@ -49,7 +49,7 @@ public class Excel{
             itemOrderedKeys.forEach((value) -> pw.print(itemData.get(value).getItemsInInventory()));
             pw.print(";" + inventoryWorth + ";");
 
-        } catch (Exception e){
+        } catch (Exception e) {
             System.err.println("Error" + e);
         }
 
@@ -59,7 +59,7 @@ public class Excel{
     }
 
     public static void importExcel() throws IOException {
-        String filePath2 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod";
+        String filePath2 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\SellCount";
         System.out.println(filePath2);
 
         File file = new File(filePath2);
@@ -72,7 +72,7 @@ public class Excel{
     }
 
     public static void importPrice() throws IOException {
-        String filePathImport = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod\\prices.csv";
+        String filePathImport = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\SellCount\\prices.csv";
         String row = null;
 
         System.err.println(filePathImport);
@@ -101,8 +101,8 @@ public class Excel{
                     itemOrderedKeys.forEach((value) -> {
                         String line;
                         try {
-                            if(((line = (csvReader.readLine())) != null)) {
-                                itemData.get(value).setItemPrice( Double.parseDouble(line));
+                            if (((line = (csvReader.readLine())) != null)) {
+                                itemData.get(value).setItemPrice(Double.parseDouble(line));
                             }
                         } catch (IOException e) {
                             e.printStackTrace();
