@@ -1,4 +1,4 @@
-package nl.tijsbeek.torchcraftexcelmod.Mod;
+package nl.tijsbeek.sellcount.Mod;
 
 import net.minecraft.item.Item;
 
@@ -11,7 +11,7 @@ public class Stocks {
 
     // * When someone makes a new "Stocks" object, they'll have to give the Item
 
-    public Stocks (int itemsInInventoryGiven, double itemPriceGiven, Item itemGiven) {
+    public Stocks(int itemsInInventoryGiven, double itemPriceGiven, Item itemGiven) {
         this.itemsInInventory = itemsInInventoryGiven;
         this.itemsInChests = 0;
         this.itemPrice = itemPriceGiven;
@@ -62,7 +62,9 @@ public class Stocks {
 
     // * This functions gets how many items are in all chests
 
-    public int getItemsInChests() { return this.itemsInChests;}
+    public int getItemsInChests() {
+        return this.itemsInChests;
+    }
 
     // * This function gets the price of the item
 

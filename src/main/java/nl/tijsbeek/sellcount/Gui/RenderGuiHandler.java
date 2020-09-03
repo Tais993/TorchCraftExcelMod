@@ -1,4 +1,4 @@
-package nl.tijsbeek.torchcraftexcelmod.Gui;
+package nl.tijsbeek.sellcount.Gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -6,8 +6,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import java.awt.*;
 
-import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.inventoryWorth;
-import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.*;
+import static nl.tijsbeek.sellcount.Mod.Stock.inventoryWorth;
+import static nl.tijsbeek.sellcount.Settings.Settings.*;
 
 public class RenderGuiHandler {
 
@@ -37,7 +37,7 @@ public class RenderGuiHandler {
             }
 
             if (chestOpenedBefore) {
-                Minecraft.getInstance().fontRenderer.drawString("Chest has been opened", locationChestOpenedX, locationChestOpenedY, Color.GREEN.getRGB());
+                renderChestModGui();
             }
         }
     }

@@ -1,24 +1,19 @@
-package nl.tijsbeek.torchcraftexcelmod.Event;
+package nl.tijsbeek.sellcount.Event;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.Slot;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import nl.tijsbeek.torchcraftexcelmod.torchcraftexcelmod;
+import nl.tijsbeek.sellcount.sellcount;
 
-import java.util.List;
+import static nl.tijsbeek.sellcount.Gui.RenderGuiHandler.chestOpenedBefore;
+import static nl.tijsbeek.sellcount.Mod.CalculateTotalWorth.*;
+import static nl.tijsbeek.sellcount.Mod.Stock.startCalculationsInt;
+import static nl.tijsbeek.sellcount.Settings.Settings.ticksUntilUpdate;
 
-import static nl.tijsbeek.torchcraftexcelmod.Gui.RenderGuiHandler.chestOpenedBefore;
-import static nl.tijsbeek.torchcraftexcelmod.Gui.RenderGuiHandler.renderChestModGui;
-import static nl.tijsbeek.torchcraftexcelmod.Mod.CalculateTotalWorth.*;
-import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.startCalculationsInt;
-import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.ticksUntilUpdate;
-
-@Mod.EventBusSubscriber(modid = torchcraftexcelmod.MOD_ID)
+@Mod.EventBusSubscriber(modid = sellcount.MOD_ID)
 public class ClientTickEvent extends Event {
 
     int tick = 0;
@@ -52,7 +47,7 @@ public class ClientTickEvent extends Event {
                     ticksChest++;
                 }
 
-                if (chestOpenedBefore){
+                if (chestOpenedBefore) {
                     if (Minecraft.getInstance().player.openContainer.inventorySlots.size() == 46 && ticksChestGui >= 20) {
                         chestOpenedBefore = false;
                         ticksChestGui = 0;

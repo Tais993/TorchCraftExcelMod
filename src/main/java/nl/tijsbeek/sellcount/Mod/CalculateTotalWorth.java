@@ -1,16 +1,14 @@
-package nl.tijsbeek.torchcraftexcelmod.Mod;
+package nl.tijsbeek.sellcount.Mod;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.Item;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 
 import java.util.List;
 
-import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.*;
-import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.includeBalInCalculations;
+import static nl.tijsbeek.sellcount.Mod.Stock.*;
+import static nl.tijsbeek.sellcount.Settings.Settings.includeBalInCalculations;
 
 public class CalculateTotalWorth {
 
@@ -33,30 +31,30 @@ public class CalculateTotalWorth {
         int finalSizeInventory = sizeInventory;
 
         itemOrderedKeys.forEach((value) -> {
-                Item item = itemData.get(value).getItem();
+            Item item = itemData.get(value).getItem();
 
-                int itemsFound = 0;
+            int itemsFound = 0;
 
-                for (int i = 0; i != finalSizeInventory; i++) {
-                    if (inventorySlots.get(i).getStack().getItem() == item)
-                        itemsFound += inventorySlots.get(i).getStack().getCount();
-                    System.out.println(itemsFound + " found of " + itemData.get(value).getItem());
-                }
+            for (int i = 0; i != finalSizeInventory; i++) {
+                if (inventorySlots.get(i).getStack().getItem() == item)
+                    itemsFound += inventorySlots.get(i).getStack().getCount();
+                System.out.println(itemsFound + " found of " + itemData.get(value).getItem());
+            }
 
-                itemData.get(value).addsItemsInChests(itemsFound);
-            });
+            itemData.get(value).addsItemsInChests(itemsFound);
+        });
     }
 
-    public static void CalculateInventoryWorth(){
+    public static void CalculateInventoryWorth() {
         inventoryWorth = 0;
 
         if (includeBalInCalculations) inventoryWorth = balWorth;
 
         // * How many items someone has * the price it's worth
-        itemOrderedKeys.forEach((value)-> inventoryWorth += itemData.get(value).getItemsInInventory() * itemData.get(value).getItemPrice());
+        itemOrderedKeys.forEach((value) -> inventoryWorth += itemData.get(value).getItemsInInventory() * itemData.get(value).getItemPrice());
 
         // * How many items someone has * the price it's worth
-        itemOrderedKeys.forEach((value)-> inventoryWorth += itemData.get(value).getItemsInChests() * itemData.get(value).getItemPrice());
+        itemOrderedKeys.forEach((value) -> inventoryWorth += itemData.get(value).getItemsInChests() * itemData.get(value).getItemPrice());
     }
 
     // * Counts the items in inventory
@@ -69,8 +67,8 @@ public class CalculateTotalWorth {
 
 
     // * Clear's all items that should be in his inv, if there're any errors
-    public static void clearInventory(){
-        itemOrderedKeys.forEach((value)-> itemData.get(value).setItemsInInventory(0));
+    public static void clearInventory() {
+        itemOrderedKeys.forEach((value) -> itemData.get(value).setItemsInInventory(0));
         inventoryWorth = 0;
     }
 }

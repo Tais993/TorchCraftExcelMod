@@ -1,9 +1,9 @@
-package nl.tijsbeek.torchcraftexcelmod.Settings;
+package nl.tijsbeek.sellcount.Settings;
 
 import javax.swing.filechooser.FileSystemView;
 import java.io.*;
 
-import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.updateValueSettings;
+import static nl.tijsbeek.sellcount.Mod.Stock.updateValueSettings;
 
 public class Settings {
 
@@ -25,7 +25,7 @@ public class Settings {
     public static int locationChestOpenedY = 0;
 
     static void createSettingsFile() throws IOException {
-        String filePath = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod\\Settings\\settings.txt";
+        String filePath = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\SellCount\\Settings\\settings.txt";
         File settingsFile = new File(filePath);
 
         FileWriter myWriter = new FileWriter(settingsFile);
@@ -43,17 +43,19 @@ public class Settings {
         myWriter.write("Location chest opened Y: 0\n");
         myWriter.write("Round numbers on 2 decimals: false\n");
         myWriter.write("Include your bal in the calculations: false\n");
-        myWriter.write("Include chests in the calculations: false");
+        myWriter.write("Include chests in the calculations: false\n");
+        myWriter.write("5% chance for mocked message: true");
         myWriter.close();
     }
 
     public static void settings() throws IOException {
-        String filePath1 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod\\Settings";
+        System.err.println("Reached start of settings");
+        String filePath1 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\SellCount\\Settings";
         System.out.println(filePath1);
         File file1 = new File(filePath1);
 
 
-        String filePath2 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod\\Settings\\settings.txt";
+        String filePath2 = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\SellCount\\Settings\\settings.txt";
         File file2 = new File(filePath2);
 
         if (!file1.exists()) {
@@ -66,87 +68,92 @@ public class Settings {
     }
 
     public static void importSettings() throws IOException {
-        String filePath = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\TorchCraftExcelMod\\Settings\\settings.txt";
+        System.err.println("Reached start of importSettings");
+
+        String filePath = FileSystemView.getFileSystemView().getDefaultDirectory().getPath() + "\\SellCount\\Settings\\settings.txt";
         File settingsFile = new File(filePath);
 
         FileReader fileReader = new FileReader(settingsFile);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-        while (true) {
-            if (bufferedReader.readLine().isEmpty()) return;
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            System.err.println("Settings are getting imported.");
             // ! Order fixed, it keeps reading until the next row is empty.
 
-            String[] line = bufferedReader.readLine().replaceAll(" ", "").split(":");
+            String[] formattedLine = line.toLowerCase().replaceAll(" ", "").split(":");
 
-            switch (line[0]) {
-                case "Ticksuntilupdate":
+            System.err.println(formattedLine[0] + " " + formattedLine[1]);
+
+            switch (formattedLine[0]) {
+                case "ticksuntilupdate":
                     // * How many ticks until updating
-                    ticksUntilUpdate = Integer.parseInt(line[1]);
+                    ticksUntilUpdate = Integer.parseInt(formattedLine[1]);
                     System.err.println("ticksToUpdate." + ticksUntilUpdate);
                     break;
-                case "Autopricesimport":
+                case "autopricesimport":
                     // * Import the prices automatically
-                    autoPricesImport = Boolean.parseBoolean(line[1]);
+                    autoPricesImport = Boolean.parseBoolean(formattedLine[1]);
                     System.err.println("autoPricesImport." + autoPricesImport);
                     break;
-                case "Showcobblestoneasstone":
+                case "showcobblestoneasstone":
                     // * Show cobblestone as stone
-                    showCobblestoneAsStone = Boolean.parseBoolean(line[1]);
+                    showCobblestoneAsStone = Boolean.parseBoolean(formattedLine[1]);
                     System.err.println("showCobblestoneAsStone." + showCobblestoneAsStone);
                     break;
-                case "Showcoalascoalblocks":
+                case "showcoalascoalblocks":
                     // * Show coal as coal blocks
-                    showCoalAsCoalBlocks = Boolean.parseBoolean(line[1]);
+                    showCoalAsCoalBlocks = Boolean.parseBoolean(formattedLine[1]);
                     System.err.println("showCoalAsCoalBlocks." + showCoalAsCoalBlocks);
                     break;
-                case "Showcoaloreascoal":
+                case "showcoaloreascoal":
                     // * show coal ore as coal
-                    showCoalOreAsCoal = Boolean.parseBoolean(line[1]);
+                    showCoalOreAsCoal = Boolean.parseBoolean(formattedLine[1]);
                     System.err.println("showCoalOreAsCoal." + showCoalOreAsCoal);
                     break;
-                case "Showlapisoreaslapis":
+                case "showlapisoreaslapis":
                     // * show lapis ore as lapis
-                    showLapisOreAsLapis = Boolean.parseBoolean(line[1]);
+                    showLapisOreAsLapis = Boolean.parseBoolean(formattedLine[1]);
                     System.err.println("showLapisOreAsOre." + showLapisOreAsLapis);
                     break;
-                case "Showtextbeforenumber(topleftscreen)":
+                case "showtextbeforenumber(topleftscreen)":
                     // * Show the text before the number GUI
-                    showTextBeforeNumberGUI = Boolean.parseBoolean(line[1]);
+                    showTextBeforeNumberGUI = Boolean.parseBoolean(formattedLine[1]);
                     System.err.println("showTextBeforeNumberGUI." + showTextBeforeNumberGUI);
                     break;
-                case "LocationinventoryworthX":
+                case "locationinventoryworthx":
                     // * Location X coords of inventory worth
-                    locationInventoryWorthX = Integer.parseInt(line[1]);
+                    locationInventoryWorthX = Integer.parseInt(formattedLine[1]);
                     System.err.println("locationInventoryWorthX." + locationInventoryWorthX);
                     break;
-                case "LocationinventoryworthY":
+                case "locationinventoryworthy":
                     // * Location Y coords of inventory worth
-                    locationInventoryWorthY = Integer.parseInt(line[1]);
+                    locationInventoryWorthY = Integer.parseInt(formattedLine[1]);
                     System.err.println("locationInventoryWorthX." + locationInventoryWorthY);
                     break;
-                case "LocationchestopenedX":
+                case "locationchestopenedx":
                     // * Location X coords of chest opened GUI
-                    locationChestOpenedX = Integer.parseInt(line[1]);
+                    locationChestOpenedX = Integer.parseInt(formattedLine[1]);
                     System.err.println("locationChestOpenedX." + locationChestOpenedX);
                     break;
-                case "LocationchestopenedY":
+                case "locationchestopenedy":
                     // * Location Y coords of chest opened GUI
-                    locationChestOpenedY = Integer.parseInt(line[1]);
+                    locationChestOpenedY = Integer.parseInt(formattedLine[1]);
                     System.err.println("locationChestOpenedY." + locationChestOpenedY);
                     break;
-                case "Roundnumberson2decimals":
+                case "loundnumberson2decimals":
                     // * Round numbers to 2 decimals.
-                    roundNumbersOn2Decimals = Boolean.parseBoolean(line[1]);
+                    roundNumbersOn2Decimals = Boolean.parseBoolean(formattedLine[1]);
                     System.err.println("roundNumbersOn2Decimals." + roundNumbersOn2Decimals);
                     break;
-                case "Includeyourbalinthecalculations":
+                case "includeyourbalinthecalculations":
                     // * Include bal in top-left
-                    includeBalInCalculations = Boolean.parseBoolean(line[1]);
+                    includeBalInCalculations = Boolean.parseBoolean(formattedLine[1]);
                     System.err.println("includeBalInCalculations." + includeBalInCalculations);
                     break;
-                case "Includechestsinthecalculations":
+                case "includechestsinthecalculations":
                     // * Include chests in calculations
-                    includeChestsInCalculations = Boolean.parseBoolean(line[1]);
+                    includeChestsInCalculations = Boolean.parseBoolean(formattedLine[1]);
                     System.err.println("includeChestsInCalculations." + includeChestsInCalculations);
                     break;
             }

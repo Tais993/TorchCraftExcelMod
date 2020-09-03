@@ -1,4 +1,4 @@
-package nl.tijsbeek.torchcraftexcelmod.Event;
+package nl.tijsbeek.sellcount.Event;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -7,14 +7,14 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import nl.tijsbeek.torchcraftexcelmod.torchcraftexcelmod;
+import nl.tijsbeek.sellcount.sellcount;
 
 import java.util.ArrayList;
 
-import static nl.tijsbeek.torchcraftexcelmod.Event.ClientTickEvent.checkChest;
-import static nl.tijsbeek.torchcraftexcelmod.Gui.RenderGuiHandler.chestOpenedBefore;
+import static nl.tijsbeek.sellcount.Event.ClientTickEvent.checkChest;
+import static nl.tijsbeek.sellcount.Gui.RenderGuiHandler.chestOpenedBefore;
 
-@Mod.EventBusSubscriber(modid = torchcraftexcelmod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = sellcount.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerInteract extends Event {
 
     static public ArrayList<BlockPos> chestOpened = new ArrayList<>();

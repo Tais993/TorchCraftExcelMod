@@ -1,19 +1,13 @@
-package nl.tijsbeek.torchcraftexcelmod.Mod;
+package nl.tijsbeek.sellcount.Mod;
 
-import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraftforge.common.MinecraftForge;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 
-import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.*;
+import static nl.tijsbeek.sellcount.Settings.Settings.*;
 
 public class Stock {
 
@@ -151,7 +145,7 @@ public class Stock {
     public static double inventoryWorth = 0;
 
     // * Update the settings, so they will get applied.
-    public static void updateValueSettings () {
+    public static void updateValueSettings() {
 
         if (showCobblestoneAsStone) {
             itemData.get("COBBLESTONE").setItemPrice(itemData.get("STONE").getItemPrice());
