@@ -1,14 +1,13 @@
-package nl.tijsbeek.torchcraftexcelmod.Mod;
+package nl.tijsbeek.sellcount.Mod;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.text.StringTextComponent;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import static nl.tijsbeek.torchcraftexcelmod.Settings.Settings.*;
+import static nl.tijsbeek.sellcount.Settings.Settings.*;
 
 public class Stock {
 
@@ -34,7 +33,7 @@ public class Stock {
             // * Assign's how many times the specified item is inside the inventory (default is 0
             // ! Add a GUI or a import from excel function
 
-            // * Imports the names, so I everything will be in the right order.
+            // * Imports the names, so I everything will be in tZhe right order.
 
             itemOrderedKeys.add("DIAMOND");
             itemOrderedKeys.add("LAPIS_LAZULI");
@@ -145,31 +144,8 @@ public class Stock {
     // * Speaks for itself, this is the inventory worth.
     public static double inventoryWorth = 0;
 
-    public static void CalculateInventoryWorth(){
-        inventoryWorth = 0;
-
-        // * It checks how many items of every item there are in your inventory
-        itemOrderedKeys.forEach((value) -> itemData.get(value).setItemsInInventory(count(itemData.get(value).getItem())));
-
-        if (includeBalInCalculations) inventoryWorth = balWorth;
-
-        // * How many items someone has * the price it's worth
-        itemOrderedKeys.forEach((value)-> inventoryWorth += itemData.get(value).itemsInInventory * itemData.get(value).getItemPrice());
-    }
-
-    // * Clear's all items that should be in his inv, if there're any errors
-    public static void clearInventory(){
-        itemOrderedKeys.forEach((value)-> itemData.get(value).setItemsInInventory(0));
-        inventoryWorth = 0;
-    }
-
-    // * Counts the items in inventory
-    public static int count(Item item) {
-        return Minecraft.getInstance().player != null ? Minecraft.getInstance().player.inventory.count(item) : 0;
-    }
-
     // * Update the settings, so they will get applied.
-    public static void updateValueSettings () {
+    public static void updateValueSettings() {
 
         if (showCobblestoneAsStone) {
             itemData.get("COBBLESTONE").setItemPrice(itemData.get("STONE").getItemPrice());

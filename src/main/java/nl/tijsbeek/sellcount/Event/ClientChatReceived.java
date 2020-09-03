@@ -1,4 +1,4 @@
-package nl.tijsbeek.torchcraftexcelmod.Event;
+package nl.tijsbeek.sellcount.Event;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.StringTextComponent;
@@ -6,11 +6,11 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import nl.tijsbeek.torchcraftexcelmod.torchcraftexcelmod;
+import nl.tijsbeek.sellcount.sellcount;
 
-import static nl.tijsbeek.torchcraftexcelmod.Mod.Stock.balWorth;
+import static nl.tijsbeek.sellcount.Mod.Stock.balWorth;
 
-@Mod.EventBusSubscriber(modid = torchcraftexcelmod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = sellcount.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ClientChatReceived extends Event {
 
     static boolean getMessage = false;
