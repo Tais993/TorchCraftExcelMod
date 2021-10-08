@@ -1,3 +1,5 @@
+Generates a settings file in your documents directory
+
 - [x] 5% kans dat je bericht mocked is
 - [x] Setting zodat de waarde van je inventory en of de chest al is geopend onder elkaar staan
 - [x] Cobblestone as stone
